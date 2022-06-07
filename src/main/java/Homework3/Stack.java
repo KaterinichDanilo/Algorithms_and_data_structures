@@ -33,7 +33,7 @@ public class Stack {
         return this.stack[this.head];
     }
 
-    private static boolean check(String textCheck) {
+    private static boolean checkParityBrackets(String textCheck) {
         Stack stack = new Stack(10);
         char open[] = {'(', '[', '{'};
         char close[] = {')', ']', '}'};
