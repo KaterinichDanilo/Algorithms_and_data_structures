@@ -32,4 +32,32 @@ public class Stack {
     public int peek() {
         return this.stack[this.head];
     }
+
+    private static boolean checkParityBrackets(String textCheck) {
+        Stack stack = new Stack(10);
+        char open[] = {'(', '[', '{'};
+        char close[] = {')', ']', '}'};
+
+        for (int i = 0; i < textCheck.length(); i++) {
+            for (int j = 0; j < 3; j++) {
+                if (textCheck.toCharArray()[i] == open[j]) {
+                    stack.push(j);
+                }
+            }
+        }
+
+        for (int i = textCheck.length() - 1; i > 0 ; i--) {
+            for (int j = 0; j < 3; j++) {
+                if (textCheck.toCharArray()[i] == close[j]) {
+                    if (j == stack.peek()){
+                        stack.pop();
+                    }
+                    if (stack.isEmpty()) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
 }
